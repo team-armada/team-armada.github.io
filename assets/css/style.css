@@ -295,6 +295,14 @@ p {
   text-align: justify;
 }
 
+strong {
+  color: var(--primary);
+}
+
+strong > a {
+  text-decoration: underline;
+}
+
 button {
   border: 0;
   cursor: pointer;

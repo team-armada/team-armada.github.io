@@ -368,12 +368,15 @@ With this information in hand, there were eight key milestones that we needed to
 achieve in order to create, manage, and serve development environments that
 instructors and students could make use of, including:
 
-1. Provisioning cloud infrastructure.
-2. Deploying a single workspace.
-3. Deploying several workspaces.
-4. Accessing workspaces from dedicated URLs.5. Persisting workspace data.
-5. Establishing relationships between user data entities and providing a user
-   interface for instructors and students. Providing user authentication.
+1. Containerizing a workspace.
+2. Provisioning cloud infrastructure.
+3. Deploying a single workspace.
+4. Deploying several workspaces.
+5. Accessing workspaces from dedicated URLs.
+6. Persisting workspace data.
+7. Establishing relationships between user data entities and providing a user
+   interface for instructors and students.
+8. Providing user authentication.
 
 ## Containerizing a Workspace: Developing at Scale
 
