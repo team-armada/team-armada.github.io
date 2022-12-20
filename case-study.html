@@ -88,7 +88,7 @@
     <div class="section header">
       <article class="container case-study-container">
         <div class="hero-text-container">
-          <h1 class="h1 centered">Case Study</h1>
+          <h1 class="h1 centered gradient-text">Case Study</h1>
         </div>
         <div id="case-study">
           <br />
@@ -246,6 +246,9 @@
             mental resources in the setup phase of a lesson are less likely to
             complete the lesson itself.
           </p>
+          <figure>
+            <img src="assets/student-struggle.gif" class="case-study-image" />
+          </figure>
 
           <br />
 
@@ -329,8 +332,8 @@
             the actual underlying computer hardware." In some instances, the
             computer running the virtualized environments is referred to as the
             <strong>host</strong> or <strong>host machine</strong>, while the
-            virtualized environments themselves are referred to as guests or
-            guest operating systems.
+            virtualized environments themselves are referred to as
+            <strong>guests</strong> or <strong>guest operating systems</strong>.
           </p>
 
           <br />
@@ -366,7 +369,7 @@
 
           <br />
 
-          <h4>2.2.2 The Downside</h4>
+          <h4>2.2.3 The Downside</h4>
 
           <p>
             The prospective overhead in terms of time and money is significant.
@@ -385,7 +388,7 @@
           </figure>
           <br />
 
-          <h3>2.3 The Cloud A Possible Solution</h3>
+          <h3>2.3 The Cloud: A Possible Solution</h3>
 
           <p>
             An ideal solution would abstract away the problems of hardware
@@ -727,7 +730,7 @@
 
           <br />
 
-          <h4>5.2.1 Challenges</h4>
+          <h4>5.1.1 Challenges</h4>
 
           <p>
             Configuring a development environment presents several challenges,
@@ -762,7 +765,7 @@
 
           <br />
 
-          <h4>5.2.2 Goals</h4>
+          <h4>5.1.2 Goals</h4>
 
           <p>
             In response to these challenges, we developed Armada with the
@@ -1005,6 +1008,11 @@
             resource using files written in either YAML or JSON. However, these
             files are often tedious to maintain and require an extensive,
             granular focus on specifying roles, permissions, and dependencies.
+          </p>
+
+          <br />
+
+          <p>
             To make it easier to specify the correct configuration, Amazon
             provides an abstraction on top of CloudFormation known as the Cloud
             Development Kit (CDK), which allows developers to create
@@ -1154,30 +1162,34 @@
           <p>
             ECS provides the ability to create containers via
             <strong>task definitions</strong>, which are analogous to how a
-            Docker image is derived from a Dockerfile. Container images are
-            published to an image registry such as Docker Hub or Amazon's own
-            registry called the Elastic Container Registry (ECR). In addition to
-            specifying what images to use, task definitions can configure
-            different parameters for a container such as port mapping, data
-            volumes, and memory usage.
+            <strong>Docker image</strong> is derived from a
+            <strong>Dockerfile</strong>. Container images are published to an
+            image registry such as Docker Hub or Amazon's own registry called
+            the Elastic Container Registry (ECR). In addition to specifying what
+            images to use, task definitions can configure different parameters
+            for a container such as port mapping, data volumes, and memory
+            usage.
           </p>
 
           <br />
 
           <p>
             After a container or set of containers has been defined as a task
-            definition, ECS allows you to run these containers as a task. A
-            group of tasks running together is called a service. Services allow
-            for finer-grained control over the group of tasks, including the
-            desired count and percentage of tasks to maintain in a running
-            status along with networking configuration. Finally, a cluster is a
-            group of tasks or services that together encompass an entire
-            application.
+            definition, ECS allows you to run these containers as a
+            <strong>task</strong>. A group of tasks running together is called a
+            <strong>service</strong>. Services allow for finer-grained control
+            over the group of tasks, including the desired count and percentage
+            of tasks to maintain in a running status along with networking
+            configuration. Finally, a <strong>cluster</strong> is a group of
+            tasks or services that together encompass an entire application.
           </p>
 
           <br />
 
           <h4>5.5 A Task at a Time</h4>
+          <figure>
+            <img src="assets/one_task.png" class="case-study-image" />
+          </figure>
 
           <p>
             In its initial form, Armada utilized individual tasks and task
@@ -1206,6 +1218,12 @@
             searching for a way to manage multiple workspaces in a way that
             would scale without introducing fragility.
           </p>
+          <figure>
+            <img
+              src="assets/reliability_scalability.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
@@ -1245,6 +1263,12 @@
             "unhealthy", ECS will automatically destroy and replace the
             containers defined by the tasks in the service.
           </p>
+          <figure>
+            <img
+              src="assets/endpoint_response_unhealthy.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
@@ -1255,7 +1279,9 @@
             workspaces by updating the number of running tasks for a given
             service from zero to one task and vice-versa.
           </p>
-
+          <figure>
+            <img src="assets/one_service.png" class="case-study-image" />
+          </figure>
           <br />
 
           <p>
@@ -1284,10 +1310,22 @@
             mechanism enabled us to automatically eliminate an EC2 instance if
             the resources are idle.
           </p>
+          <figure>
+            <img
+              src="assets/cluster-autoscaling.gif"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
           <h4>5.6.4 Look Who's Scaling Now</h4>
+          <figure>
+            <img
+              src="assets/service-autoscaling.gif"
+              class="case-study-image"
+            />
+          </figure>
 
           <p>
             With workspaces now defined as tasks under management by ECS
@@ -1333,9 +1371,9 @@
             container, we're able to determine which ports on our host operating
             system (i.e., our actual computer) map to those within the container
             itself. We can either define a set port for the container to use
-            (static port mapping) or allow the host operating system to
-            dynamically choose a port based on which ports are available
-            (dynamic port mapping).
+            (<strong>static port mapping</strong>) or allow the host operating
+            system to dynamically choose a port based on which ports are
+            available (<strong>dynamic port mapping</strong>).
           </p>
 
           <br />
@@ -1349,6 +1387,12 @@
             and a container port of 8080, we can't launch another ECS task that
             uses the same host port of 5000.
           </p>
+          <figure>
+            <img
+              src="assets/static-port-mapping.gif"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
@@ -1369,6 +1413,12 @@
             balancer in front of our ECS cluster, serving as the entry point
             into our application.
           </p>
+          <figure>
+            <img
+              src="assets/elastic-load-balancing.gif"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
@@ -1391,6 +1441,12 @@
             ephemeral range on an EC2 Instance. However, this led to another
             challenge.
           </p>
+          <figure>
+            <img
+              src="assets/dynamic-port-mapping.gif"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
@@ -1408,10 +1464,16 @@
             student connecting to a random environment instead of the one
             dedicated to them, not the intended behavior.
           </p>
+          <figure>
+            <img src="assets/alb-round-robin.gif" class="case-study-image" />
+          </figure>
 
           <br />
 
           <h6>Segmenting Traffic: Target Groups</h6>
+          <figure>
+            <img src="assets/target-groups.gif" class="case-study-image" />
+          </figure>
 
           <p>
             In order to overcome this issue, we chose to map each individual
@@ -1453,7 +1515,9 @@
             URL used for path-based routing and enabling each workspace to be
             addressed as though it were a standalone application.
           </p>
-
+          <figure>
+            <img src="assets/url-cut.gif" class="case-study-image" />
+          </figure>
           <br />
 
           <h4>5.7.3 Looking Inward</h4>
@@ -1500,6 +1564,9 @@
           <br />
 
           <h4>5.8.1 Storage Wars</h4>
+          <figure>
+            <img src="assets/ebs_vs_efs.png" class="case-study-image" />
+          </figure>
 
           <p>
             When using Docker containers locally, volumes are used to persist
@@ -1533,15 +1600,31 @@
 
           <p>
             The process that we worked out for using EBS to persist user data
-            was: A student creates a new workspace. We retrieve the latest
-            snapshot of data stored in the S3 bucket that is unique to the user.
-            We query the Elastic Container Service using Amazon's UUID for the
-            new workspace to get the UUID of the EC2 host of that workspace. We
-            attach the EBS volume to the EC2 host for the workspace. On
-            workspace shutdown, we create a new snapshot of the EBS volume and
-            overwrite the stale data in the S3 bucket. Then we detach and
-            destroy the EBS volume along with the workspace.
+            was:
           </p>
+
+          <ol>
+            <li>A student creates a new workspace.</li>
+            <li>
+              We retrieve the latest snapshot of data stored in the S3 bucket
+              that is unique to the user.
+            </li>
+            <li>
+              We query the Elastic Container Service using Amazon's UUID for the
+              new workspace to get the UUID of the EC2 host of that workspace.
+            </li>
+            <li>We attach the EBS volume to the EC2 host for the workspace.</li>
+            <li>
+              On workspace shutdown, we create a new snapshot of the EBS volume
+              and overwrite the stale data in the S3 bucket. Then we detach and
+              destroy the EBS volume along with the workspace.
+            </li>
+          </ol>
+          <figure>
+            <img src="assets/ebs-walkthrough.gif" class="case-study-image" />
+          </figure>
+
+          <br />
 
           <h6>Limitations</h6>
 
@@ -1562,6 +1645,12 @@
             to use this solution to provide persistent storage, we likely would
             have been relegated to running a single workspace per EC2 instance.
           </p>
+          <figure>
+            <img
+              src="assets/scale_complex_inefficiency.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
@@ -1590,6 +1679,9 @@
             directory. As a result, data is persisted regardless of the state of
             the container or its host.
           </p>
+          <figure>
+            <img src="workspaces_with_arrow.png" class="case-study-image" />
+          </figure>
 
           <br />
 
@@ -1655,14 +1747,27 @@
 
           <p>
             To summarize, the order of events for using Lambda in conjunction
-            with EFS to run our workspaces was as follows: Create a task
-            definition referencing a volume that is a uniquely named directory
-            on EFS. Using Lambda, create the directory within EFS that the task
-            definition references in its EFS volume configuration with the
-            naming convention of cohortName-courseName-studentName. Run the task
-            (workspace) with the EFS volume mounted to a container directory
-            called "home/coder".
+            with EFS to run our workspaces was as follows:
           </p>
+          <figure>
+            <img src="saving_files.gif" class="case-study-image" />
+          </figure>
+
+          <ol>
+            <li>
+              Create a task definition referencing a volume that is a uniquely
+              named directory on EFS.
+            </li>
+            <li>
+              Using Lambda, create the directory within EFS that the task
+              definition references in its EFS volume configuration with the
+              naming convention of cohortName-courseName-studentName.
+            </li>
+            <li>
+              Run the task (workspace) with the EFS volume mounted to a
+              container directory called "home/coder".
+            </li>
+          </ol>
 
           <br />
 
@@ -1686,6 +1791,12 @@
           <br />
 
           <h3>5.9 Improving Communication</h3>
+          <figure>
+            <img
+              src="assets/architecture_with_efs.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <p>
             To provide communication between the different pieces of our
@@ -1737,19 +1848,38 @@
           <p>
             For instance, when an instructor creates a workspace for a specific
             student, Armada performs the following actions under the hood using
-            the SDK: Creates a task definition specific to the student,
-            outlining the configuration of the requisite containers. Creates a
-            target group for the student's workspace and attaches a rule to the
-            listener on the ALB, allowing the workspace to receive traffic once
-            it's operational. Creates a service specific to the student on ECS
-            allowing its availability and health to be managed and monitored
-            automatically. Stores information relevant to the creation and
-            organization of data.
+            the SDK:
           </p>
+
+          <ul>
+            <li>
+              Creates a task definition specific to the student, outlining the
+              configuration of the requisite containers.
+            </li>
+            <li>
+              Creates a target group for the student's workspace and attaches a
+              rule to the listener on the ALB, allowing the workspace to receive
+              traffic once it's operational.
+            </li>
+            <li>
+              Creates a service specific to the student on ECS allowing its
+              availability and health to be managed and monitored automatically.
+            </li>
+            <li>
+              Stores information relevant to the creation and organization of
+              data.
+            </li>
+          </ul>
 
           <br />
 
           <h4>5.9.3 Instructors</h4>
+          <figure>
+            <img
+              src="assets/all_workspaces_instructor_view.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <p>
             Within Armada, instructors are provided with several tools to
@@ -1776,6 +1906,12 @@
           <br />
 
           <h4>5.9.4 Students</h4>
+          <figure>
+            <img
+              src="assets/all_workspaces_student_view.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <p>
             Armada provides a platform for students to access their workspaces.
@@ -1802,6 +1938,9 @@
           <br />
 
           <h4>5.9.6 Establishing Relationships</h4>
+          <figure>
+            <img src="assets/database_erd.png" class="case-study-image" />
+          </figure>
 
           <p>
             Before we could begin serving Armada to instructors or workspaces to
@@ -1814,6 +1953,12 @@
           <br />
 
           <h5>To Host or Not to Host</h5>
+          <figure>
+            <img
+              src="assets/self_hosted_database.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <p>
             We initially considered implementing an instance of PostgreSQL,
@@ -1852,18 +1997,134 @@
           <br />
 
           <h5>Relational Database Service (RDS)</h5>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <figure>
+            <img src="rds_architecture.png" class="case-study-image" />
+          </figure>
+
+          <p>
+            We decided that the cost of using RDS was low enough to justify
+            using a managed service, as it traded ease of setup for a more
+            resilient system in production. Our data would be automatically
+            backed up and, in the event of a crash, RDS would automatically
+            provision a replacement for our app.
+          </p>
+
           <br />
 
-          <h2 class="h2">6. Future work</h2>
+          <p>
+            Configuring the RDS instance to be accessible to the EC2 host for
+            the backend app only required us to use a naming convention for
+            those two resources in the CDK that automatically associated the
+            database with the backend app's server. At this point we had a
+            free-standing database that could manage all of the data relevant to
+            the relationships among our users and their resources.
+          </p>
+
+          <br />
+
+          <h5>The Admin Node</h5>
+          <figure>
+            <img src="assets/admin_node_rds.png" class="case-study-image" />
+          </figure>
+
+          <p>
+            The final piece of the puzzle required us to be able to initialize
+            the database schema. We accomplished this by adding an IAM role to
+            the EC2 instance that would allow the host to retrieve data vital to
+            establishing a connection to the database via the AWS CLI. We then
+            wrote startup scripts to run as soon as the hosts for the backend
+            app and database are provisioned, and after the backend app's host
+            is able to connect to the database we use the PostgreSQL client to
+            initialize our schema. At this point, Armada was ready to handle all
+            requests from instructors and students.
+          </p>
+
+          <br />
+
+          <h5>Mischief Managed</h5>
+          <figure>
+            <img
+              src="assets/architecture_rds_added.png"
+              class="case-study-image"
+            />
+          </figure>
+
+          <p>
+            With the database in place and the admin node able to connect and
+            make requests to that database, we had a way to efficiently manage
+            relationships between all of the entities required to serve
+            students' workspaces and allow instructors to manage students,
+            workspaces, and cohorts. What the database did not explicitly give
+            us the ability to do was differentiate between types of users on
+            login, i.e. whether or not a given user should have administrative
+            privileges.
+          </p>
+
+          <br />
+
+          <h3>5.10 Locking It Down</h3>
+
+          <p>
+            In order to offer differentiated access to our application we opted
+            to create an authentication layer, which allowed us to direct users
+            to the correct user interface on the app based on their role.
+          </p>
+
+          <br />
+
+          <p>
+            Authentication is notoriously a difficult area to develop due to the
+            many issues around securely storing user credentials, warding off
+            various types of attack by malicious actors, session management, and
+            email and password retrieval. AWS has a managed solution for
+            authentication with its Cognito service.
+          </p>
+
+          <br />
+
+          <h4>5.10.1 In Cognito</h4>
+          <figure>
+            <img src="assets/cognito.png" class="case-study-image" />
+          </figure>
+
+          <p>
+            Cognito is a tool to connect applications to AWS and provides
+            authentication, authorization, and user management through user and
+            identity pools. We were able to use the CDK to provision a user pool
+            and an admin user whenever the Armada infrastructure is first
+            deployed. Then, when an instructor adds students through the Armada
+            interface, this adds a user to the Cognito user pool along with
+            their credentials, adds the student to the RDS database, and sends
+            an email to that student with a temporary password. The student is
+            then able to log in to see their designated workspaces. Although
+            authentication was a small part of our application, it was critical
+            to integrating some of the isolated pieces of the Armada
+            application.
+          </p>
+
+          <br />
+
+          <h2 class="h2">6. Our Goals Achieved</h2>
+          <figure>
+            <img src="assets/final_architecture.png" class="case-study-image" />
+          </figure>
+
+          <p>
+            With authentication and the database in place, we had a way to
+            associate users of all types with the resources that they might want
+            to access in Armada. This associated data meant that we could use
+            all of the other components of Armada to serve students their
+            specific workspaces in the browser and allow them to keep track of
+            their work without having to perform any configuration or
+            installations on their own machines. Instructors can also create
+            custom development environments to deploy to an arbitrary number of
+            students without needing to directly interact with AWS.
+            Additionally, Armada's optimizations ensure the lowest cost for
+            instructors, maximizing efficiency while preserving usability.
+          </p>
+          <br />
+
+          <h2 class="h2">7. Future work</h2>
           <p>
             In the future, we would like Armada to have extended features that
             allow instructors to specify custom development environments for

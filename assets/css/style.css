@@ -860,6 +860,26 @@ h6 {
   text-transform: uppercase;
 }
 
+.light-purple {
+  color: var(--link-color-hover);
+}
+
+.gradient-text {
+  /* background-image: linear-gradient(111deg, var(--primary), var(--secondary));
+  background-clip: text;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  background-color: var(--primary);
+  background-image: linear-gradient(45deg, var(--white), var(--primary));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  line-height: 2;
+}
+
 p {
   margin-bottom: 10px;
   font-family: Inter, sans-serif;
@@ -2144,4 +2164,43 @@ a:hover {
   #team-header {
     padding-bottom: 0px;
   }
+}
+
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: 30px;
+    line-height: 4px;
+  }
+
+  /* .navigation-right {
+    display: none;
+  }
+
+  .mobile-menu {
+    height: 50px;
+    width: 50px;
+    background-color: var(--primary);
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-menu::before,
+  .mobile-menu::after {
+    content: '';
+    flex: 1;
+  }
+
+  .mobile-menu p {
+    margin: 0 auto;
+  }
+
+  .mobile-navigation {
+    display: none;
+  } */
 }
