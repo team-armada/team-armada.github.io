@@ -3,8 +3,13 @@
   --secondary: #4530ff;
   --bg-color: #0a0b13;
   --white: #fff;
-  --text-color: rgb(239, 239, 239);
+  --text-color: #efefef;
   --link-color-hover: #bea4ff;
+}
+
+* {
+  /* padding: 0; */
+  margin: 0;
 }
 
 html {
@@ -87,6 +92,7 @@ h1 {
 
 img {
   border: 0;
+  margin: 0 auto;
 }
 
 svg:not(:root) {
@@ -123,6 +129,7 @@ button::-moz-focus-inner {
 
 figure {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 figcaption {
@@ -292,7 +299,19 @@ p {
   margin-top: 0;
   margin-bottom: 10px;
   text-align: justify;
+  /* For testing */
+  /* border: 1px solid red; */
 }
+
+/* figure { */
+/* For testing */
+/* border: 1px solid green; */
+/* } */
+
+/* img { */
+/* For testing */
+/* border: 1px solid yellow; */
+/* } */
 
 strong {
   color: var(--primary);
@@ -344,37 +363,42 @@ label {
 }
 
 .case-study-image-large {
-  margin: 40px auto;
+  /* margin: 40px auto; */
   display: block;
   width: 90%;
 }
 
+.case-study-image-medium {
+  /* margin: 35px auto; */
+  width: 75%;
+}
+
 .case-study-image {
-  margin: 40px auto;
+  /* margin: 40px auto; */
   display: block;
-  width: 70%;
+  width: 100%;
 }
 
 .case-study-image-small {
-  margin: 40px auto;
+  /* margin: 40px auto; */
   display: block;
   width: 50%;
 }
 
 .case-study-image-x-small {
-  margin: 40px auto;
+  /* margin: 40px auto; */
   display: block;
   width: 25%;
 }
 
 .case-study-video {
-  margin: 40px auto;
+  /* margin: 40px auto; */
   display: block;
   width: 70%;
 }
 
 .case-study-video-small {
-  margin: 40px auto;
+  /* margin: 40px auto; */
   display: block;
   width: 50%;
 }
@@ -468,7 +492,7 @@ label {
   }
 
   .case-study-image {
-    width: 80%;
+    width: 100%;
     margin: 0px auto;
   }
 }
