@@ -224,7 +224,12 @@
             felt by students just getting started, which means they're
             particularly challenging for their instructors as well.
           </p>
-
+          <figure>
+            <img
+              src="assets/students_instructor.png"
+              class="case-study-image"
+            />
+          </figure>
           <br />
 
           <h4>1.3.1 Students</h4>
@@ -253,7 +258,12 @@
             navigating version conflicts and configuration issues on a
             student-by-student basis is neither efficient nor scalable.
           </p>
-
+          <figure>
+            <img
+              src="assets/instructor_challenges.png"
+              class="case-study-image"
+            />
+          </figure>
           <br />
 
           <h2 class="h2">2. Supporting Students</h2>
@@ -273,7 +283,9 @@
             recurring issues of configuration and dependency management across
             many individual machines is burdensome.
           </p>
-
+          <figure>
+            <img src="assets/instructor_options.png" class="case-study-image" />
+          </figure>
           <br />
 
           <h3>2.2 One for All, All for One</h3>
@@ -297,6 +309,9 @@
           <br />
 
           <h4>2.2.1 Virtualization</h4>
+          <figure>
+            <img src="assets/virtualization.png" class="case-study-image" />
+          </figure>
 
           <p>
             According to
@@ -333,7 +348,12 @@
             a given virtual machine to the desired state should something go
             awry.
           </p>
-
+          <figure>
+            <img
+              src="assets/images_virtual_machines.png"
+              class="case-study-image"
+            />
+          </figure>
           <br />
 
           <p>
@@ -357,7 +377,12 @@
             hardware altogether. The server is also a single point of failure.
             If it goes down, no student can access their environment.
           </p>
-
+          <figure>
+            <img
+              src="assets/cost_management_expansion_spof.png"
+              class="case-study-image"
+            />
+          </figure>
           <br />
 
           <h3>2.3 The Cloud A Possible Solution</h3>
@@ -376,6 +401,12 @@
           <br />
 
           <h2 class="h2">3. Cloud Deployments</h2>
+          <figure>
+            <img
+              src="assets/cloud_raining_computers.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
@@ -417,10 +448,19 @@
             many developers opt to further virtualize their environments with
             the help of <strong>containers</strong>.
           </p>
+          <figure>
+            <img src="assets/memory_cpu_cost.png" class="case-study-image" />
+          </figure>
 
           <br />
 
           <h3>3.4 Containerization</h3>
+          <figure>
+            <img
+              src="assets/memory_cpu_cost_containers.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <p>
             Containers use virtualization but are not fully-fledged virtual
@@ -460,10 +500,19 @@
             consumed by the Docker Engine which is a runtime environment that
             enables containers to be run locally on a developer's machine.
           </p>
+          <figure>
+            <img
+              src="assets/dockerfile_to_dockerengine.png"
+              class="case-study-image"
+            />
+          </figure>
 
           <br />
 
           <h3>3.5 The Challenges of Managing the Cloud</h3>
+          <figure>
+            <img src="assets/octopus.png" class="case-study-image" />
+          </figure>
 
           <p>
             In order for an instructor to take advantage of containerization in
@@ -510,6 +559,9 @@
             creating and managing developer environments at scale within the
             cloud. These are Coder, Gitpod, and GitHub Codespaces.
           </p>
+          <figure>
+            <img src="assets/existing_solutions.png" class="case-study-image" />
+          </figure>
 
           <br />
 
@@ -520,6 +572,9 @@
             strengths, they also come with their own set of tradeoffs. We
             assessed these solutions against several key criteria:
           </p>
+          <figure>
+            <img src="assets/criteria.png" class="case-study-image" />
+          </figure>
 
           <ul>
             <li>
@@ -658,6 +713,9 @@
             Below is a comparison of each product, including their open-source
             and paid offerings.
           </p>
+          <figure>
+            <img src="assets/solutions_chart.png" class="case-study-image" />
+          </figure>
 
           <br />
 
@@ -731,6 +789,9 @@
           <br />
 
           <h3>5.3 The Roadmap</h3>
+          <figure>
+            <img src="assets/roadmap_icon.png" class="case-study-image" />
+          </figure>
 
           <p>
             With this information in hand, there were eight key milestones that
@@ -753,6 +814,1053 @@
             <li>Providing user authentication.</li>
           </ol>
 
+          <br />
+
+          <h3>5.4 Containerizing a Workspace: Developing at Scale</h3>
+
+          <br />
+
+          <h4>5.4.1 Choosing an Environment</h4>
+          <figure>
+            <img
+              src="assets/gitpod_vs_codeserver.png"
+              class="case-study-image"
+            />
+          </figure>
+
+          <p>
+            Creating the coding environment itself wasn't the primary focus of
+            building Armada. Fortunately, a number of freely available, open
+            source solutions already existed.
+          </p>
+
+          <br />
+
+          <p>
+            As mentioned previously, both Gitpod and Coder offer open-source
+            versions of their paid platforms and products including
+            containerized versions of VS Code, a popular, open-source code
+            editor created by Microsoft. These containers bundle VS Code with
+            its dependencies, exposing it via a network port which can be
+            accessed from a browser. While either solution could have been used
+            as the basis for Armada's workspaces, there were significant
+            tradeoffs for each.
+          </p>
+
+          <br />
+
+          <p>
+            Even in its open-source form, Gitpod offers a number of extensible
+            configuration and customization features in addition to several
+            integrations. However, this comes at the cost of both speed and
+            size. At the time of Armada's initial build, Gitpod's container was
+            roughly 7 gigabytes (GB), and its typical start time ranged from
+            5-10 minutes. By contrast, Coder's container (code-server) was less
+            than a GB and offered all of the functionality we would need to
+            provide an IDE to students, while being both lightweight and fast
+            with load times under 20 seconds. However, the container is a
+            significantly more limited version of their enterprise product,
+            disabling many key features including groups, custom templates,
+            isolated runners, and high availability.
+          </p>
+
+          <br />
+
+          <p>
+            Given that one of our main goals was to keep costs down, we chose to
+            use the Coder image as our base since it would allow us to provision
+            more instances of the workspace container per server than the GitPod
+            image.
+          </p>
+
+          <br />
+
+          <p>
+            We now had containers that would run on our local machines and were
+            able to provide individualized workspaces that could be accessed in
+            the browser. Our next challenge would be running a single container
+            on a server in the cloud.
+          </p>
+
+          <br />
+
+          <h3>5.5 Gaining Access to the Cloud</h3>
+
+          <br />
+
+          <h4>5.5.1 Starting from Scratch</h4>
+
+          <p>
+            In order to begin building Armada, we needed to make a key
+            architectural decision: would we focus on a single cloud provider
+            (<strong>cloud native</strong>) or ensure that Armada works across
+            all platforms (<strong>cloud agnostic</strong>)? Making this
+            decision would have real-world implications for the reliability,
+            scalability, and maintenance cost of our application.
+          </p>
+
+          <br />
+
+          <h5>Cloud Native</h5>
+
+          <p>
+            "Cloud Native" is a development philosophy that centers around
+            building applications with technologies that are "native" to a
+            specific cloud service provider. One of the most useful features of
+            a cloud-native approach is that it allows developers to avoid
+            undifferentiated heavy lifting, meaning that the operational burden
+            of managing IT services is delegated to the cloud provider. This
+            allows developers to focus on building the application's core
+            features. However, by limiting the application to one cloud service
+            provider, the developers become locked into that provider's
+            framework, sacrificing the freedom to move their application to a
+            different cloud provider's platform without substantial rewrites.
+          </p>
+          <figure>
+            <img src="assets/cloud_native.png" class="case-study-image" />
+          </figure>
+          <br />
+
+          <h5>Cloud Agnostic</h5>
+
+          <p>
+            A cloud-agnostic approach revolves around designing applications
+            that can be deployed to any cloud environment using open-source
+            technologies. Building cloud applications in this way gives
+            developers the ability to avoid vendor lock-in.
+          </p>
+          <figure>
+            <img src="assets/cloud_agnostic.png" class="case-study-image" />
+          </figure>
+          <br />
+
+          <p>
+            The additional flexibility offered by writing applications to work
+            on any cloud provider is not without tradeoffs. It is easy to garner
+            the impression that cloud agnosticism means that a single code base
+            will work on all cloud platforms, but that is not the actual case.
+            In reality, a fair amount of work has to be done to adapt the
+            application to run on each cloud provider's environment.
+          </p>
+
+          <br />
+
+          <p>
+            Additionally, using open-source technologies intended to support
+            cloud agnosticism can add significantly more complexity. Developer
+            responsibilities could expand to include activities such as applying
+            security patches, updating virtual machines' operating systems, and
+            managing backups. Unfortunately, these duties take valuable time
+            away from other tasks, such as creating new features or resolving
+            user issues. While the cloud-agnostic approach is meant to improve
+            flexibility and portability, it often introduces significant
+            logistical and maintenance overhead.
+          </p>
+
+          <br />
+
+          <h5>Amazon Web Services (AWS)</h5>
+
+          <p>
+            After considering the advantages and disadvantages of each
+            architectural approach, we decided to take a cloud-native approach
+            and host our application on Amazon. AWS provided several services
+            that would enable us to focus on development instead of system
+            administration.
+          </p>
+          <figure>
+            <img src="assets/aws_logo.png" class="case-study-image" />
+          </figure>
+          <br />
+
+          <p>
+            In addition, AWS has a vast tooling ecosystem that integrates
+            seamlessly with the platform,providing a cohesive developer
+            experience. AWS exposes a multitude of different tools including the
+            Command Line Interface (CLI), Software Development Kit (SDK), and
+            Cloud Development Kit (CDK), which greatly improved our ability to
+            prototype and iterate.
+          </p>
+
+          <br />
+
+          <h4>5.5.2 Spike then Automate</h4>
+
+          <p>
+            As we set out to construct Armada, our primary focus was on creating
+            a consistent, reproducible environment that could be easily shared
+            amongst our team and inform a deployment strategy for our future
+            users.
+          </p>
+          <figure>
+            <img src="assets/sdk_cdk.png" class="case-study-image" />
+          </figure>
+
+          <br />
+
+          <p>
+            Amazon enables the programmatic provisioning of resources through
+            its Infrastructure-as-Code (IaC) product, CloudFormation.
+            CloudFormation enables developers to request and customize any AWS
+            resource using files written in either YAML or JSON. However, these
+            files are often tedious to maintain and require an extensive,
+            granular focus on specifying roles, permissions, and dependencies.
+            To make it easier to specify the correct configuration, Amazon
+            provides an abstraction on top of CloudFormation known as the Cloud
+            Development Kit (CDK), which allows developers to create
+            CloudFormation templates and customize resources using one of
+            several prominent programming languages.
+          </p>
+
+          <br />
+
+          <p>
+            Through our use of the CDK, we were able to create, share, and
+            incrementally extend our architecture with ease. This was important,
+            as Armada's cloud native nature required that it be built from the
+            ground up with the benefits of the cloud in mind. We needed to
+            understand how specific pieces of the architecture would interact
+            and communicate and the only way to do that was through the platform
+            rather than developing Armada locally and viewing the cloud as a
+            deployment target.
+          </p>
+
+          <br />
+
+          <h3>5.5 Deploying a Single Workspace</h3>
+
+          <br />
+
+          <h4>5.5.1 Workspaces in Motion</h4>
+
+          <p>
+            With our workspace container squared away, we needed a viable method
+            for constructing, serving, and managing our containerized developer
+            environments in the cloud.
+          </p>
+
+          <br />
+
+          <h4>5.5.2 Walk, Then Run</h4>
+
+          <p>
+            In order to understand how our containers would interact with their
+            hosts, we needed to be able to focus on the simplest iteration of
+            our product: A single unmanaged container deployed in a cloud
+            environment. For this task, we made use of AWS's Elastic Cloud
+            Compute (EC2) service, which provides and manages virtual servers,
+            which we could then use as hosts for workspaces. Since workspaces in
+            Armada are defined as Docker images, we began by installing the
+            Docker Engine on an EC2 instance and configured that container to
+            open a network port so that it would be accessible from an outside
+            connection.
+          </p>
+          <figure>
+            <img src="assets/nginx_codeserver.png" class="case-study-image" />
+          </figure>
+
+          <br />
+
+          <p>
+            Overall, this process didn't offer much in the way of automation and
+            would not have been practicable at scale. While our initial focus
+            was on a single environment, it was important to consider the need
+            for the ability to deploy multiple environments simultaneously in
+            the future.
+          </p>
+
+          <br />
+
+          <h4>5.5.3 A Symphony of Software</h4>
+
+          <p>
+            Automating the deployment, management, scaling, and lifecycle of
+            containerized applications deployed across multiple machines, also
+            known as <strong>container orchestration</strong>, is a common issue
+            in the world of software development. The Docker Engine on its own
+            is not sufficient to meet these challenges at scale. As such we
+            looked to several different open-source and cloud native solutions,
+            including Kubernetes, Docker Swarm, and Amazon's Elastic Container
+            Service (ECS).
+          </p>
+          <figure>
+            <img
+              src="assets/orchestration_tools_chart.png"
+              class="case-study-image"
+            />
+          </figure>
+
+          <br />
+
+          <h5>Kubernetes</h5>
+
+          <p>
+            Kubernetes is a mature, actively-maintained, open-source technology.
+            The richness of its feature set was highly attractive, but those
+            features also came with a proportionate level of complexity. We
+            concluded that since we would only need a small subset of the
+            functionality provided by Kubernetes, it would be better to use a
+            less powerful technology that addressed our needs.
+          </p>
+
+          <br />
+
+          <h5>Docker Swarm</h5>
+
+          <p>
+            Docker Swarm is a part of the Docker Engine and therefore has far
+            fewer dependencies than Kubernetes. Additionally, the time required
+            to learn how to deploy a cluster of workers managed by Docker Swarm
+            is much less than what would have likely been needed to use
+            Kubernetes. However, it is not without its drawbacks. Using Docker
+            Swarm would have required the Armada team to construct and implement
+            complex mechanisms for managing container logging, handling
+            container health checks, and scaling the underlying architecture
+            based on demand (i.e., controlling the number of provisioned EC2
+            instances).
+          </p>
+
+          <br />
+
+          <h5>Elastic Container Service (ECS)</h5>
+
+          <p>
+            The Elastic Container Service (ECS) provided by Amazon struck the
+            right balance between a rich feature set and ease of use. ECS
+            allowed us to provision a managed cluster of containers via Amazon's
+            Cloud Development Kit (CDK). Furthermore, we were able to configure
+            ECS to spin up containers or tear them down as needed without
+            burdening the Armada codebase with the logic required to perform
+            orchestration. Additionally, ECS integrates with other AWS services
+            and grants us the ability to autoscale both containers and the
+            hardware required to host those containers. It also provides a
+            mechanism for monitoring and logging containers, creating the
+            ability to recover crashed student workspaces without requiring the
+            instructor to intervene.
+          </p>
+
+          <br />
+
+          <h4>5.4 Key Terminology</h4>
+
+          <p>
+            In order to fully grasp the way Armada's workspaces eventually
+            functioned within ECS, it's necessary to review some key
+            terminology.
+          </p>
+
+          <br />
+
+          <p>
+            ECS provides the ability to create containers via
+            <strong>task definitions</strong>, which are analogous to how a
+            Docker image is derived from a Dockerfile. Container images are
+            published to an image registry such as Docker Hub or Amazon's own
+            registry called the Elastic Container Registry (ECR). In addition to
+            specifying what images to use, task definitions can configure
+            different parameters for a container such as port mapping, data
+            volumes, and memory usage.
+          </p>
+
+          <br />
+
+          <p>
+            After a container or set of containers has been defined as a task
+            definition, ECS allows you to run these containers as a task. A
+            group of tasks running together is called a service. Services allow
+            for finer-grained control over the group of tasks, including the
+            desired count and percentage of tasks to maintain in a running
+            status along with networking configuration. Finally, a cluster is a
+            group of tasks or services that together encompass an entire
+            application.
+          </p>
+
+          <br />
+
+          <h4>5.5 A Task at a Time</h4>
+
+          <p>
+            In its initial form, Armada utilized individual tasks and task
+            definitions to pull a custom image from Docker Hub that included
+            code-server, Coder's open-source VS Code image described above. This
+            allowed us to run and deploy our developer environments as
+            proof-of-concept and enabled individual workspaces to be accessed
+            via the Internet.
+          </p>
+          <figure>
+            <img
+              src="assets/one-task-to-rule-them-all.gif"
+              class="case-study-image"
+            />
+          </figure>
+
+          <br />
+
+          <h4>5.6 Moving Forward</h4>
+
+          <p>
+            With this approach, we gained the ability to provide isolated
+            developer environments in the cloud. However, running workspaces as
+            individual tasks did not give us fine-grained control over the
+            health and monitoring of their containers. Therefore, we began
+            searching for a way to manage multiple workspaces in a way that
+            would scale without introducing fragility.
+          </p>
+
+          <br />
+
+          <h3>5.6 Deploying Multiple Workspaces</h3>
+
+          <p>
+            In order for Armada to operate as a fully-fledged product, we needed
+            to be able to serve an arbitrary number of users simultaneously.
+            Therefore, we needed a method for not only managing the lifecycle
+            and health of our developer environments but for scaling the
+            infrastructure running those containers.
+          </p>
+
+          <br />
+
+          <h4>5.6.1 The Problem with Tasks</h4>
+
+          <p>
+            By operating exclusively with tasks, we weren't able to respond to
+            any unexpected errors within our containers, which meant that our
+            tasks could stop without any recourse. Additionally, tasks did not
+            offer an option to configure networking, which would become
+            extremely important when we set out to match the correct task to the
+            correct student workspace. Eventually, we concluded that we would
+            need ECS services to meet our goals.
+          </p>
+
+          <br />
+
+          <h4>5.6.2 A "Healthy" Alternative</h4>
+
+          <p>
+            Services enable ECS to automate the monitoring and management of
+            containers. ECS performs health checks by making requests to a
+            predefined URL which replies to ECS with a 200 response if the
+            service is perfectly operational. If a container is deemed
+            "unhealthy", ECS will automatically destroy and replace the
+            containers defined by the tasks in the service.
+          </p>
+
+          <br />
+
+          <p>
+            In the case of Armada, we only needed to run one task per service
+            for each student's workspace. As an added benefit, this
+            configuration provided us with a method to start and stop individual
+            workspaces by updating the number of running tasks for a given
+            service from zero to one task and vice-versa.
+          </p>
+
+          <br />
+
+          <p>
+            With services in place, we needed to address an underlying issue
+            with how the infrastructure for our ECS cluster was being allocated.
+            Although ECS manages individual services and tasks, the actual
+            containers run on individual EC2 instances which have a finite
+            amount of available resources, most importantly memory (i.e., RAM).
+            Luckily, AWS provides a method for creating a pool of resources that
+            can scale horizontally with demand known as an autoscaling group
+            (ASG).
+          </p>
+
+          <br />
+
+          <h4>5.6.3 To Infinity and Beyond</h4>
+
+          <p>
+            We defined an autoscaling group for the EC2 instances that would act
+            as hosts for our workspace containers. We configured this
+            autoscaling group to add capacity based on the amount of memory
+            reserved for each individual service. If the memory reserved for all
+            tasks hosted on an individual EC2 instance exceeded this reserved
+            bound of its total memory, the autoscaling group would instantiate a
+            new EC2 instance to accommodate the additional demand. This same
+            mechanism enabled us to automatically eliminate an EC2 instance if
+            the resources are idle.
+          </p>
+
+          <br />
+
+          <h4>5.6.4 Look Who's Scaling Now</h4>
+
+          <p>
+            With workspaces now defined as tasks under management by ECS
+            services, we were able to easily turn workspaces on and off as well
+            as manage unexpected failures within the workspaces themselves. We
+            also gained the ability to scale EC2 instances to precisely meet the
+            needs of running workspaces without wasting overhead. Services also
+            offered one additional benefit that allowed us to solve a problem
+            with providing workspaces to students that we would not have been
+            able to easily address otherwise: Networking.
+          </p>
+
+          <br />
+
+          <h3>5.7 Routing</h3>
+
+          <br />
+
+          <h4>5.7.1 From Port to Port</h4>
+
+          <p>
+            Up until this point, we'd been deploying individual workspaces on
+            separate EC2 instances, because we'd hardcoded the container ports
+            used in our task definitions. This was not the most efficient way to
+            use EC2 instances, since each EC2 instance has enough resources to
+            host multiple workspaces simultaneously. However, enabling multiple
+            services to reside on the same host added significant complexity,
+            because each successive workspace would need to guarantee that the
+            ports it exposed on the host were not in use by another process or
+            workspace. It turns out that this is quite a common hurdle when
+            deploying containers on ECS.
+          </p>
+
+          <br />
+
+          <h4>5.7.2 Added Complexity: A Deep Dive</h4>
+
+          <p>
+            Containers essentially operate as isolated virtual machines that
+            share the underlying resources of their hosts rather than deploying
+            a guest operating system per container. As such, containers maintain
+            their own set of port mappings and settings. When we define a
+            container, we're able to determine which ports on our host operating
+            system (i.e., our actual computer) map to those within the container
+            itself. We can either define a set port for the container to use
+            (static port mapping) or allow the host operating system to
+            dynamically choose a port based on which ports are available
+            (dynamic port mapping).
+          </p>
+
+          <br />
+
+          <h5>Static Port Mapping</h5>
+
+          <p>
+            If we relied on static port mapping, we could not deploy a container
+            using the same host ports that were being used by another container.
+            For example, if we have a task definition with a host port of 5000
+            and a container port of 8080, we can't launch another ECS task that
+            uses the same host port of 5000.
+          </p>
+
+          <br />
+
+          <p>
+            In order to temporarily bypass this roadblock, we continued tearing
+            down and deploying our infrastructure, deploying one workspace to
+            each EC2 instance in our ECS cluster. This gave us some leeway to
+            keep experimenting while we searched for a more viable solution.
+          </p>
+
+          <br />
+
+          <h5>Elastic Load Balancing (ELB) and Dynamic Port Mapping</h5>
+
+          <p>
+            We eventually landed on a potential solution to our networking
+            challenges with Elastic Load Balancing (ELB) by using it as a load
+            balancer in front of our ECS cluster, serving as the entry point
+            into our application.
+          </p>
+
+          <br />
+
+          <p>
+            Out of the four different load balancing options offered by ELB, we
+            selected the Application Load Balancer (ALB). The ALB integrates
+            seamlessly with ECS and provides a few key features that helped us
+            overcome several of the challenges imposed by static port mapping.
+          </p>
+
+          <br />
+
+          <p>
+            The ALB supports dynamic host port mapping, which would allow us to
+            deploy multiple tasks on the same EC2 instance. In order to take
+            advantage of this behavior, all we needed to do was update our task
+            definitions to indicate that selecting a host port would be the
+            ALB's responsibility. When the ALB encounters a task configured in
+            this way, it automatically selects an available port from the
+            ephemeral range on an EC2 Instance. However, this led to another
+            challenge.
+          </p>
+
+          <br />
+
+          <h6>Unintended Consequences</h6>
+
+          <p>
+            Typically, a load balancer is used to distribute traffic across a
+            fleet of horizontally-scaled servers. However, Armada's workspaces
+            are stateful: each one "belongs" to a specific student. By default,
+            ALBs use a round-robin routing algorithm, which ensures that traffic
+            is routed to each of the load balancer's targets in an evenly
+            distributed manner (i.e., one after the other). This meant that
+            every time the ALB endpoint was hit, the incoming request would be
+            forwarded to a completely different task, which would result in a
+            student connecting to a random environment instead of the one
+            dedicated to them, not the intended behavior.
+          </p>
+
+          <br />
+
+          <h6>Segmenting Traffic: Target Groups</h6>
+
+          <p>
+            In order to overcome this issue, we chose to map each individual
+            workspace to its own target group. A target group is a collection of
+            one or more logical resources that can receive traffic from a load
+            balancer, which, in turn, provides the ability to segment traffic to
+            specific resources based on URL.
+          </p>
+
+          <br />
+
+          <p>
+            Application Load Balancers (ALBs) can attach listeners to each
+            available port on which they expect to receive traffic (i.e., Port
+            80). Each of these listeners contain one or more rules that define
+            where a specific request should be routed. Typically, these pathways
+            are routed to specific target groups based on the path contained
+            within the URL used to reach the ALB.
+          </p>
+
+          <br />
+
+          <p>
+            In the case of Armada, we use our consistent naming structure (i.e.,
+            cohort-course-student) to define the resource path for each
+            workspace's unique URL, and each rule is then created and attached
+            to the ALB listener when a new task is defined.
+          </p>
+
+          <br />
+
+          <p>
+            By taking advantage of this path-based routing structure alongside
+            dynamic port mapping, we were able to maintain a one-to-one
+            relationship between workspaces and routes. As a result, each
+            workspace could be given a unique path that would enable it to be
+            accessed from a single base URL. Each workspace was then linked with
+            its own NGINX container, allowing us to rewrite the portion of the
+            URL used for path-based routing and enabling each workspace to be
+            addressed as though it were a standalone application.
+          </p>
+
+          <br />
+
+          <h4>5.7.3 Looking Inward</h4>
+
+          <p>
+            With each of these pieces in place, we were able to successfully
+            automate the distribution of our developer environments. We could
+            efficiently host multiple environments on a single EC2 instance,
+            scale to more EC2 instances if needed, and provide a consistent
+            method for accessing the correct environment.
+          </p>
+
+          <br />
+
+          <p>
+            Now that our overarching infrastructure was largely solidified, it
+            was time to turn our efforts inward and focus on providing a
+            complete user experience.
+          </p>
+
+          <br />
+
+          <p>
+            First up, we needed to provide a reliable way for our instructors
+            and students to persist their data irrespective of the lifecycle of
+            their developer environments.
+          </p>
+
+          <br />
+
+          <h3>5.8 Data Persistence</h3>
+
+          <p>
+            One of the major issues we faced as we were developing Armada was
+            determining how to persist data. Containers are inherently
+            stateless, so each development environment that exists in a
+            container does not save user data when the container stops running
+            or otherwise shuts down. In other words, any changes a student makes
+            to a workspace would be lost if not for persistent storage, so we
+            needed to find a way to save data beyond the life of the ECS
+            container.
+          </p>
+
+          <br />
+
+          <h4>5.8.1 Storage Wars</h4>
+
+          <p>
+            When using Docker containers locally, volumes are used to persist
+            data. However, volumes can not be used in a straightforward manner
+            within a cloud environment due to their distributed nature.
+            Therefore, we needed a more sustainable approach to storing volumes
+            on a remote host and matching data to the correct container upon
+            startup. In order to accomplish this, we explored two major avenues
+            - using the Elastic File System (EFS) or Elastic Block Storage (EBS)
+            in conjunction with S3 buckets.
+          </p>
+
+          <br />
+
+          <h5>Elastic Block Storage (EBS)</h5>
+
+          <p>
+            EBS is a service that creates a virtual hard drive that can be
+            mounted to an EC2 instance and treated as a block device. Using EBS
+            originally seemed like a great way to get read/write storage for the
+            workspace off of the workspace's physical host. However, these
+            volumes are typically tied to the lifecycle of their hosts,
+            introducing more volatility than necessary. Turning off or
+            destroying an EBS volume would mean losing all of the student's
+            data. For us to be able to store user data written to the EBS
+            volume, we would need to create an S3 bucket to save a snapshot of
+            the data.
+          </p>
+
+          <br />
+
+          <p>
+            The process that we worked out for using EBS to persist user data
+            was: A student creates a new workspace. We retrieve the latest
+            snapshot of data stored in the S3 bucket that is unique to the user.
+            We query the Elastic Container Service using Amazon's UUID for the
+            new workspace to get the UUID of the EC2 host of that workspace. We
+            attach the EBS volume to the EC2 host for the workspace. On
+            workspace shutdown, we create a new snapshot of the EBS volume and
+            overwrite the stale data in the S3 bucket. Then we detach and
+            destroy the EBS volume along with the workspace.
+          </p>
+
+          <h6>Limitations</h6>
+
+          <p>
+            Once we were able to establish that it was technically possible to
+            use EBS and S3 in this manner, we also found that there were a
+            number of issues that made it a suboptimal solution. Using EBS/S3
+            largely precluded us from being able to scale workspaces easily and
+            efficiently. EBS mounts directly to a virtual server in much the
+            same way that a USB drive can be plugged into your desktop, which
+            meant that we would have to work out a way to programmatically
+            determine what mount points were available on the workspace host,
+            and how to tell the newly instantiated workspace where that volume
+            could be found. Solving both of these problems would mean writing
+            custom scripts for the EC2 host that could discover and provide that
+            information to both AWS and the workspace on the fly, an approach
+            that we regarded as fragile and difficult to manage. If we decided
+            to use this solution to provide persistent storage, we likely would
+            have been relegated to running a single workspace per EC2 instance.
+          </p>
+
+          <br />
+
+          <p>
+            One of our primary goals when building Armada was to have a system
+            that would scale student workspaces efficiently, meaning that we
+            would use the minimum amount of computational power required to
+            provide a smooth user experience. We ultimately decided to abandon
+            EBS/S3 as a way to save user data between sessions, and instead
+            turned our attention to Amazon's Elastic File System (EFS).
+          </p>
+
+          <br />
+
+          <h5>Elastic File System (EFS)</h5>
+
+          <p>
+            EFS is a serverless, cloud native storage service that provides an
+            on-demand, scalable file system. Where EBS creates a virtual hard
+            drive that can be mounted to a server, EFS acts instead as an
+            extension of an operating system's file system. It allows for data
+            to be stored without the need to maintain storage capacity because
+            the file system will grow and shrink according to the needs of the
+            application. EFS works by monitoring a specific directory and uses
+            serverless functions to mirror changes made to files in that
+            directory. As a result, data is persisted regardless of the state of
+            the container or its host.
+          </p>
+
+          <br />
+
+          <p>
+            With EFS, we could much more readily predict and control how a
+            workspace would connect to its storage. We immediately saw this as a
+            tool that could fit our project's needs, since being able to attach
+            our storage directly to a workspace without having to care about the
+            workspace's host was a significant advantage. However, we had some
+            reservations about EFS's pricing model and cost when compared to
+            EBS. In the end, EFS proved to be the best fit for our use case of
+            saving data for each student workspace that fit seamlessly with ECS.
+          </p>
+
+          <br />
+
+          <h6>Missed Connections</h6>
+
+          <p>
+            Despite its benefits, implementing EFS still had its complexities.
+            Using the CDK, we were able to provision an instance of EFS with the
+            required security groups and networking configuration. Our first
+            effort to implement EFS as a workspace's storage mechanism involved
+            creating a task definition for each student workspace where a
+            specified EFS volume could either be created or retrieved on
+            startup.
+          </p>
+
+          <br />
+
+          <p>
+            However, in order to successfully attach and utilize EFS within
+            Armada, there were two key components that needed to be present.
+            First, the specific folder or directory being used on EFS must exist
+            within the EFS volume itself before it can be mounted to a given
+            container. Next, each task definition for a container must specify a
+            mount point for the EFS volume that will be attached when the
+            container is created, enabling the location of the directory to be
+            configured based on the container's needs.
+          </p>
+
+          <br />
+
+          <p>
+            To resolve this issue, we used AWS Lambda functions to create
+            uniquely named directories that would contain the EFS volumes
+            mounted for each individual workspace. AWS Lambda runs serverless
+            functions in response to predefined events. In our case, the Lambda
+            function for creating the EFS mount point is triggered whenever an
+            instructor creates a new task definition for a specific workspace.
+          </p>
+
+          <br />
+
+          <p>
+            The directories created as mount points for EFS followed the naming
+            convention of "cohortName-courseName-studentName/coder" and within
+            the container definitions for each workspace, that directory was
+            mapped to "/home/coder".
+          </p>
+
+          <br />
+
+          <p>
+            To summarize, the order of events for using Lambda in conjunction
+            with EFS to run our workspaces was as follows: Create a task
+            definition referencing a volume that is a uniquely named directory
+            on EFS. Using Lambda, create the directory within EFS that the task
+            definition references in its EFS volume configuration with the
+            naming convention of cohortName-courseName-studentName. Run the task
+            (workspace) with the EFS volume mounted to a container directory
+            called "home/coder".
+          </p>
+
+          <br />
+
+          <h4>5.8.2 Great Success</h4>
+
+          <p>
+            With a data persistence solution in hand, we were able to
+            successfully save students' work from one session to the next. Now,
+            students could be sure that their data would be there, regardless of
+            any interruptions or failures.
+          </p>
+
+          <br />
+
+          <p>
+            Looking forward, we needed a way to expose all of these established
+            resources to our instructors and students in a straightforward and
+            intuitive way.
+          </p>
+
+          <br />
+
+          <h3>5.9 Improving Communication</h3>
+
+          <p>
+            To provide communication between the different pieces of our
+            architecture, the Armada team needed to give instructors the ability
+            to programmatically communicate with each component and issue
+            commands in a way that was intuitive and convenient. We needed to
+            expose these methods to our end users so that they could manage and
+            create workspaces without having to rely purely on the command line
+            or interfaces established by AWS (i.e., Console or CLI). To achieve
+            these goals, we began constructing a full-stack application that
+            would eventually become the Armada application.
+          </p>
+
+          <br />
+
+          <h4>5.9.1 The Armada Application</h4>
+
+          <p>
+            Armada's backend is an Express application written in TypeScript
+            which acts as the central control hub, connecting each component of
+            provisioned architecture to ensure that instructors can provision
+            and manage student workspaces at scale. The application itself is
+            containerized and deployed within the group of containers known as
+            the ECS Cluster, which provides guarantees about its health and
+            availability.
+          </p>
+
+          <br />
+
+          <h4>5.9.2 The Software Development Kit (SDK)</h4>
+
+          <p>
+            In order to communicate with each piece of the architecture, we
+            needed a structured interface with which to do so. Amazon offers a
+            Software Development Kit (SDK) that provides a modular, class-based
+            client for each resource that allows you to instantiate and send
+            individual commands to perform common actions. Each command can be
+            customized by defining properties on an `input` object. While
+            performing each action in isolation is useful, Armada's needs
+            continued to increase in complexity as its functionality was
+            extended. By wrapping our feature set around the functionality
+            defined within the SDK, the Armada team was able to encapsulate
+            several isolated actions into singular endpoints, greatly
+            simplifying an instructor's workflow.
+          </p>
+
+          <br />
+
+          <p>
+            For instance, when an instructor creates a workspace for a specific
+            student, Armada performs the following actions under the hood using
+            the SDK: Creates a task definition specific to the student,
+            outlining the configuration of the requisite containers. Creates a
+            target group for the student's workspace and attaches a rule to the
+            listener on the ALB, allowing the workspace to receive traffic once
+            it's operational. Creates a service specific to the student on ECS
+            allowing its availability and health to be managed and monitored
+            automatically. Stores information relevant to the creation and
+            organization of data.
+          </p>
+
+          <br />
+
+          <h4>5.9.3 Instructors</h4>
+
+          <p>
+            Within Armada, instructors are provided with several tools to
+            create, organize, and manage their students' accounts and
+            workspaces. Instructors can create individual accounts for students,
+            group students into cohorts, and use those cohorts to enroll
+            students into individual classes. Once a class has been populated,
+            the instructor can generate individualized developer environments
+            (i.e., workspaces) for every student. Each workspace is
+            automatically associated with a given student and accessible through
+            each student's student portal or through the instructor's "preview"
+            button.
+          </p>
+
+          <br />
+
+          <p>
+            In addition, if an administrator needs to ensure that a student has
+            the most up-to-date docker image for a given workspace, all they
+            need to do is start and stop the service. ECS is automatically
+            configured to retrieve the latest image when a container is created.
+          </p>
+
+          <br />
+
+          <h4>5.9.4 Students</h4>
+
+          <p>
+            Armada provides a platform for students to access their workspaces.
+            If a student's workspace is in an inactive state or has not yet
+            entered a "running" state, the student can resume their workspace
+            without instructor intervention. Most importantly, the student can
+            connect to each of their workspaces and access all of their files.
+          </p>
+
+          <br />
+
+          <h4>5.9.5 A Step Above</h4>
+
+          <p>
+            By utilizing the SDK and offering a user interface, we gained
+            programmatic access to each of our provisioned resources and created
+            a layer of abstraction on top of AWS that makes it easy for both
+            instructors and students to manage and access workspaces. For our
+            application to work, however, we need the ability to establish and
+            retain relationships between the individual pieces of our data,
+            allowing for organization and clarity.
+          </p>
+
+          <br />
+
+          <h4>5.9.6 Establishing Relationships</h4>
+
+          <p>
+            Before we could begin serving Armada to instructors or workspaces to
+            students, we needed a database within our architecture that would
+            help us manage the relationships between workspaces, students,
+            courses, and cohorts (the term we use for students grouped together
+            by an instructor).
+          </p>
+
+          <br />
+
+          <h5>To Host or Not to Host</h5>
+
+          <p>
+            We initially considered implementing an instance of PostgreSQL,
+            either on the server that would act as the host for Armada's backend
+            or on a separate server intended solely to act as the host for the
+            database. We quickly dismissed the former solution as we felt that
+            it would be too fragile. Having decided that the database should be
+            implemented on its own server, we then began to consider the
+            possibility of using Amazon's managed solution, the Relational
+            Database Service (RDS).
+          </p>
+
+          <br />
+
+          <p>
+            In some respects, provisioning a single EC2 instance to run
+            PostgreSQL would have greatly simplified Armada's configuration. Had
+            Armada been configured in this manner, it would have been trivial
+            for the backend application to connect to the database and begin
+            making queries. The only component that would need to be created
+            would be a security group that allowed the backend application to
+            communicate with the database host.
+          </p>
+
+          <br />
+
+          <p>
+            However, there were significant tradeoffs inherent in this approach.
+            If this approach were selected, Armada would have been solely
+            responsible for managing the database. Additionally, EC2 instances
+            have ephemeral storage, and therefore, Armada would need to
+            implement a mechanism for regularly backing up the database as well
+            as methods to handle scenarios where the database crashed.
+          </p>
+
+          <br />
+
+          <h5>Relational Database Service (RDS)</h5>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <br />
 
           <h2 class="h2">6. Future work</h2>

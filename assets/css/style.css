@@ -1,10 +1,10 @@
 :root {
   --primary: #804efd;
   --secondary: #4530ff;
-  /* --bg-color: #0a0b12; */
   --bg-color: #0a0b13;
   --white: #fff;
   --text-color: rgb(239, 239, 239);
+  --link-color-hover: #bea4ff;
 }
 
 html {
@@ -45,7 +45,6 @@ body {
   /* background-color: #fff; */
   background-color: var(--bg-color);
   font-family: Inter, sans-serif;
-  /* color: #c4ddff; */
   color: #ffff;
   font-size: 14px;
   line-height: 20px;
@@ -162,7 +161,7 @@ figcaption {
 }
 
 #sidebar ul a:hover {
-  color: #c4ddff;
+  color: var(--link-color-hover-hover-hover-hover);
 }
 
 #sidebar ul ul {
@@ -705,7 +704,7 @@ label {
 }
 
 .fa-github:hover {
-  color: #c4ddff;
+  color: var(--link-color-hover-hover-hover-hover);
 }
 
 .diagram {
@@ -801,7 +800,7 @@ ul.team-member-icons li {
 }
 
 .team-member-icon:hover {
-  color: #c4ddff;
+  color: var(--link-color-hover-hover-hover-hover);
 }
 
 h1 {
@@ -893,7 +892,7 @@ a {
 }
 
 a:hover {
-  color: #c4ddff;
+  color: var(--link-color-hover-hover-hover-hover);
 }
 
 .section {
@@ -987,7 +986,11 @@ a:hover {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 25px;
-  background-image: linear-gradient(111deg, var(--primary), #c4ddff);
+  background-image: linear-gradient(
+    111deg,
+    var(--primary),
+    var(--link-color-hover-hover-hover-hover)
+  );
 }
 
 .black-h2 {
@@ -1027,7 +1030,8 @@ a:hover {
 }
 
 .white-paragraph {
-  color: #b5bbbf;
+  /* color: #b5bbbf; */
+  color: var(--white);
   font-weight: 400;
   text-align: justify;
 }
@@ -1185,7 +1189,7 @@ a:hover {
 }
 
 .tab-link.w--current {
-  border-color: #c4ddff;
+  border-color: var(--link-color-hover-hover-hover-hover);
   background-color: transparent;
 }
 
@@ -1269,7 +1273,7 @@ a:hover {
   background-image: url('../armada-bg.png');
   /* background-repeat: no-repeat, no-repeat; */
   background-size: cover;
-  height: 800px;
+  height: 75vh;
   width: 100%;
   background-position: center;
   /* background-color: royalblue; */
@@ -1358,7 +1362,7 @@ a:hover {
 .tertiary-button-text {
   position: relative;
   z-index: 1;
-  color: #c4ddff !important;
+  color: var(--link-color-hover-hover-hover-hover) !important;
 }
 
 .tertiary-button:hover {
@@ -1460,7 +1464,7 @@ a:hover {
 }
 
 .link-block:hover {
-  color: #c4ddff;
+  color: var(--link-color-hover-hover-hover-hover);
 }
 
 .navigation-container {
