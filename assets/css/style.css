@@ -3,7 +3,7 @@
   --secondary: #4530ff;
   --bg-color: #0a0b13;
   --white: #fff;
-  --text-color: #efefef;
+  --text-color: #e0e0e0;
   --link-color-hover: #bea4ff;
 }
 
@@ -394,7 +394,11 @@ label {
 .case-study-video {
   /* margin: 40px auto; */
   display: block;
-  width: 70%;
+  width: 100%;
+}
+.caption {
+  text-align: center;
+  color: var(--text-color);
 }
 
 .case-study-video-small {
@@ -1642,6 +1646,10 @@ a:hover {
 
 .image-container {
   position: relative;
+}
+
+.video {
+  width: 100%; 
 }
 
 .video-responsive {
